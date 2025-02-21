@@ -7,6 +7,10 @@ Tämä on tekoälyä hyödyntäen rakennettu paikkatietosovellus, joka visualiso
 - Mahdollisuus valita ja ladata erilaisia Helsingin kaupungin tarjoamia WFS-tasoja.
 - Leaflet-kartta, jossa WFS-tasot renderöidään dynaamisesti.
 
+## Sovelluksen toiminta kuvina
+
+![Sovelluksen näkymä selaimessa.](images/yleiskuva.png)
+
 ## Asennus ja käyttöönotto paikallisesti
 
 ### 1. Kloonaa repositorio
