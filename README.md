@@ -58,7 +58,7 @@ flask run
 
 ### 6. WFS-tasojen lataaminen
 
-Sovelluksen käyttöliittymässä voit valita ja ladata haluamasi WFS-tasot kartalle. Tasot haetaan Helsingin kaupungin WFS-rajapinnasta.
+Sovelluksen käyttöliittymässä voit valita ja ladata haluamasi WFS-tasot kartalle. Tasot haetaan Helsingin kaupungin WFS-rajapinnasta osoitteesta https://kartta.hel.fi/ws/geoserver/avoindata/wfs.
 
 ## Ylläpito ja laajennettavuus
 
