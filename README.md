@@ -11,11 +11,21 @@ Tämä on tekoälyä hyödyntäen rakennettu paikkatietosovellus, joka visualiso
 
 ![Sovelluksen näkymä selaimessa.](images/yleiskuva.png)
 
+Tältä sovellus näyttää selaimessa.
+
+![Valikko](images/valikko.png)
+
+Karttaa on zoomattu: siinä näkyy Johanneksenkirkko ja Tähtitorninmäki. Pudotusvalikosta voidaan valita, mikä karttataso halutaan ladata kartalle, tässä tapauksessa YLRE_Viheralue_alue.
+
+![Karttataso ladattuna](images/karttataso.png)
+
+Klikkaamalla "Lataa valittu taso" sovellus ottaa yhteyden Helsingin kaupungin WFS-rajapintaan, hakee karttatason ja lataa sen kartalle.
+
 ## Asennus ja käyttöönotto paikallisesti
 
 ### 1. Kloonaa repositorio
 
-Avaa terminaali ja suorita seuraava komento:
+Avaa komentokehote (terminaali) ja suorita seuraava komento:
 
 ```
 git clone https://github.com/agismos/helsinki-karttatasot.git
