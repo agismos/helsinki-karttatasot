@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helsingin Kartta</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        #map {
+            height: 600px;
+            width: 80%;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Helsingin Kartta</h1>
+
+    <div class="controls">
+        <label for="layer-select">Valitse karttataso:</label>
+        <select id="layer-select">
+            <option value="avoindata:YLRE_Katu_ja_viherosat_ajorata_alue">YLRE_Katu_ja_viherosat_ajorata_alue</option>
+            <option value="avoindata:YLRE_Katu_ja_viherosat_eiliikenne_alue">YLRE_Katu_ja_viherosat_eiliikenne_alue</option>
+            <option value="avoindata:YLRE_Katu_ja_viherosat_eiliikenne_piste">YLRE_Katu_ja_viherosat_eiliikenne_piste</option>
+            <option value="avoindata:YLRE_Katu_ja_viherosat_eiliikenne_viiva">YLRE_Katu_ja_viherosat_eiliikenne_viiva</option>
+            <option value="avoindata:YLRE_Katu_ja_viherosat_kevytliikenne_alue">YLRE_Katu_ja_viherosat_kevytliikenne_alue</option>
+            <option value="avoindata:YLRE_Katualue_alue">YLRE_Katualue_alue</option>
+            <option value="avoindata:YLRE_Katuosat_alue">YLRE_Katuosat_alue</option>
+            <option value="avoindata:YLRE_Katuosat_piste">YLRE_Katuosat_piste</option>
+            <option value="avoindata:YLRE_Katuosat_viiva">YLRE_Katuosat_viiva</option>
+            <option value="avoindata:YLRE_Viheralue_alue">YLRE_Viheralue_alue</option>
+            <option value="avoindata:YLRE_Viherosat_alue">YLRE_Viherosat_alue</option>
+            <option value="avoindata:YLRE_Viherosat_piste">YLRE_Viherosat_piste</option>
+            <option value="avoindata:YLRE_Viherosat_viiva">YLRE_Viherosat_viiva</option>            
+        </select>
+        <button onclick="loadSelectedLayer()">Lataa valittu taso</button>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/qgis.png') }}" alt="QGIS-kuvakaappaus" class="qgis-image" style="width: 60%; height: auto;">
+        <p class="caption">Kuva [1]. Helsingin kaupungin kaupunkiympäristön paikkatietoaineiston käsittelyä QGIS-sovelluksella.</p>
+    </div>
+
+    <script>
+        let map = L.map('map').setView([60.1699, 24.9384], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        let layerGroup = L.layerGroup().addTo(map);
+
+        function getBbox() {
+            let bounds = map.getBounds();
+            return `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`;
+        }
+
+        function loadSelectedLayer() {
+            let selectedLayer = document.getElementById("layer-select").value;
+            let bbox = getBbox();  // Haetaan kartan rajat
+            
+            fetch('/get_layer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ layer_name: selectedLayer, bbox: bbox })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.features) {
+                    let geoJsonLayer = L.geoJSON(data, {
+                        onEachFeature: function (feature, layer) {
+                            if (feature.properties) {
+                                layer.bindPopup("Tunniste: " + feature.id);
+                            }
+                        }
+                    });
+                    layerGroup.clearLayers();
+                    layerGroup.addLayer(geoJsonLayer);
+                } else {
+                    alert("Virhe ladattaessa tasoa.");
+                }
+            })
+            .catch(error => console.error('Fetch error:', error));
+        }
+    </script>
+
+</body>
+</html>

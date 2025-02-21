@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#map {
+    width: 80%;
+    height: 600px;
+    margin: auto;
+    border: 2px solid #333;
+}
+
+.qgis-image {
+    width: 50% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
