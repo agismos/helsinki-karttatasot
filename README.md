@@ -15,7 +15,7 @@ Tältä sovellus näyttää selaimessa.
 
 ![Valikko](images/valikko.png)
 
-Karttaa on zoomattu: siinä näkyy Johanneksenkirkko ja Tähtitorninmäki. Pudotusvalikosta voidaan valita, mikä karttataso halutaan ladata kartalle, tässä tapauksessa YLRE_Viheralue_alue.
+Karttaa on zoomattu: siinä näkyy Johanneksenkirkko ja Tähtitorninvuori. Pudotusvalikosta voidaan valita, mikä karttataso halutaan ladata kartalle, tässä tapauksessa YLRE_Viheralue_alue.
 
 ![Karttataso ladattuna](images/karttataso.png)
 
