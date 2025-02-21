@@ -14,8 +14,8 @@ Tämä on tekoälyä hyödyntäen rakennettu paikkatietosovellus, joka visualiso
 Avaa terminaali ja suorita seuraava komento:
 
 ```
-git clone https://github.com/agismos/helsinki-paikkatieto.git
-cd helsinki-paikkatieto
+git clone https://github.com/agismos/helsinki-karttatasot.git
+cd helsinki-karttatasot
 ```
 
 ### 2. Luo ja aktivoi virtuaaliympäristö (suositeltavaa)
