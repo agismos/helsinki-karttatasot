@@ -34,6 +34,14 @@ cd helsinki-karttatasot
 
 ### 2. Luo ja aktivoi virtuaaliympäristö (suositeltavaa)
 
+#### Windows (PowerShell)
+
+```
+python -m venv venv
+venv\Scripts\activate
+```
+
+
 #### Mac/Linux
 
 ```
@@ -45,6 +53,12 @@ source venv/bin/activate
 
 ```
 pip install -r requirements.txt
+```
+
+Tarvittaessa varmista vielä pyproj-moduulin asennus:
+
+```
+pip install pyproj
 ```
 
 ### 4. Käynnistä sovellus
