@@ -34,13 +34,6 @@ cd helsinki-karttatasot
 
 ### 2. Luo ja aktivoi virtuaaliympäristö (suositeltavaa)
 
-#### Windows (PowerShell)
-
-```
-python -m venv venv
-venv\Scripts\activate
-```
-
 #### Mac/Linux
 
 ```
