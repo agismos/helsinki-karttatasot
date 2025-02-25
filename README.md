@@ -77,4 +77,3 @@ Sovelluksen käyttöliittymässä voit valita ja ladata haluamasi WFS-tasot kart
 
 - Sovellus tukee dynaamisia karttatasoja, joita voidaan helposti laajentaa lisäämällä uusia WFS-tasoja valikkoon.
 - Paikkatieto-analyysit voidaan toteuttaa PyQGISin avulla suoraan sovelluksessa.
-- Sovellus voidaan helposti siirtää Render-palveluun julkaisua varten.
