@@ -28,7 +28,7 @@ Klikkaamalla "Lataa valittu taso" sovellus ottaa yhteyden Helsingin kaupungin WF
 Avaa komentokehote (terminaali) ja suorita seuraava komento:
 
 ```
-git clone https://github.com/agismos/helsinki-karttatasot.git
+git clone https://github.com/isagimos/helsinki-karttatasot.git
 cd helsinki-karttatasot
 ```
 
